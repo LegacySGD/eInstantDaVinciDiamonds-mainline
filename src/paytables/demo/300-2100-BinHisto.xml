@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Histo>
+
+	<ClientInputBuilder class="com.wagerworks.gts.client.histo.XMLHistoClientMappedExecutionModel">
+		<!-- TRY mode mappings -->
+		<ExecutionModelMapping previousExecutionModel="Wager_Try" nextStage="Wager" nextExecutionModel="Wager_Try" />
+		<!-- BUY mode mappings -->
+		<ExecutionModelMapping previousExecutionModel="Wager_Buy" nextStage="Wager" nextExecutionModel="Wager_Buy" />
+		<ExecutionModelMapping nextStage="Scenario" nextExecutionModel="Scenario" />
+		<ExecutionModelMapping nextStage="Reveal" nextExecutionModel="Reveal" />
+		<ExecutionModelMapping previousExecutionModel="Reveal" nextStage="Wager" nextExecutionModel="Wager_Buy" />
+	</ClientInputBuilder>
+
+	<ExecutionModels>
+		<Wager_Try>
+			<Input>
+				<ActionInput>
+					<Action>TRY</Action>
+				</ActionInput>
+				<WagerInput>
+					<Wager name="Wager1">200</Wager>
+				</WagerInput>
+				<JSONInput>{'testData':0}</JSONInput>
+			</Input>
+			<Result>
+				<GameCount class="com.wagerworks.gts.histo.common.counter.SimpleCounter">
+					<Param name="appendName" value="TRY" />
+				</GameCount>
+				<Sums>
+					<Wager class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Settled/text()" />
+						<Param name="xpath" value="//OutcomeDetail/Pending/text()" />
+					</Wager>
+					<Pay_TRY class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Payout/text()" />
+					</Pay_TRY>
+				</Sums>
+				<Pays class="com.wagerworks.gts.histo.common.sum.ConcatValues">
+					<Param name="xpath" value="//OutcomeDetail/Payout/text()" />
+				</Pays>
+			</Result>
+		</Wager_Try>
+		<Wager_Buy>
+			<Input>
+				<ActionInput>
+					<Action>BUY</Action>
+				</ActionInput>
+				<WagerInput>
+					<Wager name="Wager1">200</Wager>
+				</WagerInput>
+				<JSONInput>{'testData':0}</JSONInput>
+			</Input>
+			<Result>
+				<GameCount
+					class="com.wagerworks.gts.histo.common.counter.SimpleCounter">
+					<Param name="appendName" value="BUY" />
+				</GameCount>
+				<Sums>
+					<Wager class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Settled/text()" />
+						<Param name="xpath" value="//OutcomeDetail/Pending/text()" />
+					</Wager>
+					<Pay_BUY class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Payout/text()" />
+					</Pay_BUY>
+				</Sums>
+			</Result>
+		</Wager_Buy>
+		<Scenario>
+			<Input>
+			</Input>
+			<Result>
+				<GameCount class="com.wagerworks.gts.histo.common.counter.SimpleCounter">
+					<Param name="appendName" value="SCENARIO"/>
+				</GameCount>
+				<Sums>
+					<Pay_SCENARIO class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Payout/text()"/>
+					</Pay_SCENARIO>
+				</Sums>
+			</Result>
+		</Scenario>
+		<Reveal>
+			<Input>
+				<JSONInput>{'revealStatus':0,'revealData':'test message'}</JSONInput>
+			</Input>
+			<Result>
+				<GameCount class="com.wagerworks.gts.histo.common.counter.SimpleCounter">
+					<Param name="appendName" value="REVEAL"/>
+				</GameCount>
+				<Sums>
+					<Pay_REVEAL class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Payout/text()"/>
+					</Pay_REVEAL>
+				</Sums>
+				<Pays class="com.wagerworks.gts.histo.common.sum.ConcatValues">
+					<Param name="xpath" value="//OutcomeDetail/Payout/text()" />
+				</Pays>
+			</Result>
+		</Reveal>
+	</ExecutionModels>
+</Histo>

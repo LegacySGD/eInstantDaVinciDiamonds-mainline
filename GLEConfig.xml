@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<family code="2100" desc="Lottery Game" organizationName="Interactive" studio="crdc">
+
+	<game name="Da Vinci Diamonds Tic Tac Toe COM" version="1.0.5" gameengineversion="2" gamelogicversion="1.0"
+		number="1" 
+		gametype="L" 
+		jackpotid="" 
+		loadprevstate="N" 
+		numberGenerator="RNG" 
+		spots=""
+		productId="1" 
+		gamegroup="eGames" 
+		betMultipliers="50,100,200,300,500,1000"
+		languages="en,fr_CA,it,sv,de" 
+		skbPlatformVersion="1.4.0">
+
+		<paymodel name="DaVinciDiamonds : 300-2100-101"
+			modelid="300-2100-101" 
+			revealId="2100" 
+			revealVersionId="2100"
+			cointhreshold="0" 
+			confidentlevelpct="95" 
+			fixedminmax="Y" 
+			hibethold="7" 
+			lobethold="7" 
+			hibetsd="11.71" 
+			lobetsd="10.61" 
+			maxcoins="1000" 
+			mincoins="0" 
+			maxmainbetwin="0" 
+			maxsidebetwin="0" />
+		<paymodelConfig clienttype="HTML" configcode="IXML" modelid="300-2100-101" />
+		<paymodelConfig clienttype="HTML" configcode="PHLP" modelid="300-2100-101" />
+
+		<paymodel name="DaVinciDiamonds : 300-2100-102"
+			modelid="300-2100-102" 
+			revealId="2100" 
+			revealVersionId="2100"
+			cointhreshold="0" 
+			confidentlevelpct="95" 
+			fixedminmax="Y" 
+			hibethold="11" 
+			lobethold="11" 
+			hibetsd="11.65" 
+			lobetsd="10.51" 
+			maxcoins="1000" 
+			mincoins="0" 
+			maxmainbetwin="0" 
+			maxsidebetwin="0" />
+		<paymodelConfig clienttype="HTML" configcode="IXML" modelid="300-2100-102" />
+		<paymodelConfig clienttype="HTML" configcode="PHLP" modelid="300-2100-102" />
+
+		<paymodel name="DaVinciDiamonds : 300-2100-103"
+			modelid="300-2100-103" 
+			revealId="2100" 
+			revealVersionId="2100"
+			cointhreshold="0" 
+			confidentlevelpct="95" 
+			fixedminmax="Y" 
+			hibethold="15" 
+			lobethold="15" 
+			hibetsd="11.63" 
+			lobetsd="10.43" 
+			maxcoins="1000" 
+			mincoins="0" 
+			maxmainbetwin="0" 
+			maxsidebetwin="0" />
+		<paymodelConfig clienttype="HTML" configcode="IXML" modelid="300-2100-103" />
+		<paymodelConfig clienttype="HTML" configcode="PHLP" modelid="300-2100-103" />
+
+		<denom currencycode="GBP" amount="0.01"/>
+		<denom currencycode="EUR" amount="0.01"/>
+		<denom currencycode="USD" amount="0.01,0.02"/>
+		<denom currencycode="CAD" amount="0.01,0.02"/>
+		<denom currencycode="FPY" amount="0.01,1.00"/>
+	</game>
+
+</family>

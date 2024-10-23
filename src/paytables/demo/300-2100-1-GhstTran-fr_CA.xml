@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translation language="fr_CA">
+<phrase key="softwareId" value="ID du logiciel"/>
+<phrase key="transactionId" value="ID de transaction"/>
+<phrase key="totalWins" value="Gains totaux"/>
+<phrase key="totalWager" value="Mise totale"/>
+<phrase key="outcomeLabel" value="Résultats gagnants"/>
+<phrase key="lineLabel" value="Symboles"/>
+<phrase key="winLabel" value="Lignes gagnantes"/>
+<phrase key="winPrizeLabel" value="Gains"/>
+<phrase key="noWinLabel" value="Non"/>
+<phrase key="A" value="Diamant"/>
+<phrase key="B" value="Pierre précieuse rouge"/>
+<phrase key="C" value="Pierre précieuse jaune"/>
+<phrase key="D" value="Pierre précieuse verte"/>
+<phrase key="E" value="Pierre précieuse blueue"/>
+<phrase key="F" value="Pierre précieuse mauve"/>
+</translation>

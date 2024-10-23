@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translation language="en">
+	<phrase key="softwareId" value="Software ID"/>
+	<phrase key="transactionId" value="Transaction ID"/>
+	<phrase key="totalWins" value="Total Wins"/>
+	<phrase key="totalWager" value="Total Wager"/>
+	<phrase key="outcomeLabel" value="Winning Outcome"/>
+	<phrase key="lineLabel" value="Symbols"/>
+	<phrase key="winLabel" value="Winning Lines"/>
+	<phrase key="winPrizeLabel" value="Wins"/>
+	<phrase key="noWinLabel" value="No"/>
+	<phrase key="A" value="Diamond"/>
+	<phrase key="B" value="Red Gem"/>
+	<phrase key="C" value="Yellow Gem"/>
+	<phrase key="D" value="Green Gem"/>
+	<phrase key="E" value="Blue Gem"/>
+	<phrase key="F" value="Purple Gem"/>
+</translation>

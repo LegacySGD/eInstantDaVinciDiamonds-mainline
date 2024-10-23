@@ -1,0 +1,603 @@
+<SignedPaytable>
+	<Key>wwpublic1</Key>
+	<Signature>U1VgDmOCCGm+8A2NaflZBqV3AOj6RLHgSHgFMZ+l4zY4q/bjxtVVHlQJp8kgrb9EDyC4FNV142andh97GlrfRi3J7QC/2HH0ga35m2uo0Z2LO4T4GQ3HRIIXKS+IZsr04J2wQcZi4mBVLVSW25iXHlEjAW4sWQoxjBC4bvsNOBs=</Signature>
+	<Digest>p49m1VgmifWEKvu2PGue+MS2Oio=</Digest>
+	<DigestedData>
+		<StageModel className="" version="2.0.4">
+			<Stage name="Wager">
+				<ExecutionModel>
+					<Default>Wager_Buy</Default>
+					<Model action="BUY">Wager_Buy</Model>
+					<Model action="TRY">Wager_Try</Model>
+				</ExecutionModel>
+			</Stage>
+			<Stage name="Scenario">
+				<ExecutionModel>
+					<Default>Scenario</Default>
+				</ExecutionModel>
+			</Stage>
+			<Stage name="Reveal">
+				<ExecutionModel>
+					<Default>Reveal</Default>
+				</ExecutionModel>
+			</Stage>
+			<ExecutionModel name="Wager_Buy">
+				<Outcomes>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ActionOutcomeWrapper" name="WagerType" type="ActionOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.WagerOutcomeWrapper" name="Game.Total" type="WagerOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.JSONOutcomeWrapper" name="WagerInput" type="JSONOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="PricePoint" type="TriggerOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.LoopOutcomeWrapper" name="" type="LoopOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.RandomResponseOutcomeWrapper" name="" type="RandomResponseOutcome">
+						<Option>encrypted</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODERevealDataOutcomeWrapper" name="ODERevealData" type="JSONOutcome">
+						<Option>persistent</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="Wager_Buy.StaticTriggers" type="TriggerOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.StageOutcomeWrapper" name="" type="StageOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TransactionOutcomeWrapper" name="" type="TransactionOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+				</Outcomes>
+				<Components>
+					<Verifiers>
+						<Verifier className="com.igt.gle.game.component.verifier.wager.ActionVerifier" type="Wager_Buy.ActionVerifier">
+							<InputMapping>
+								<Input name="" source="client" type="ActionInput"/>
+								<Input name="WagerType" source="outcome" type="ActionOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.verifier.action.ActionStrategy" name="action"/>
+							</StrategyMapping>
+						</Verifier>
+						<Verifier className="com.igt.gle.game.component.verifier.ode.ODEInputVerifier" type="Wager_Buy.ODEInputVerifier.Wager">
+							<InputMapping>
+								<Input name="" source="client" type="WagerInput"/>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="PricePoint" source="outcome" type="TriggerOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.verifier.ode.strategy.WagerStrategy" name="wager"/>
+							</StrategyMapping>
+						</Verifier>
+						<Verifier className="com.igt.gle.game.component.verifier.ode.ODEInputVerifier" type="Wager_Buy.ODEInputVerifier.JSON">
+							<InputMapping>
+								<Input name="" source="client" type="JSONInput"/>
+								<Input name="WagerInput" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.verifier.ode.strategy.JSONStrategy" name="json"/>
+							</StrategyMapping>
+						</Verifier>
+					</Verifiers>
+					<Populators>
+						<Populator className="com.igt.gle.game.component.populator.RngIdGenerator" type="Wager_Buy.RngIdGenerator">
+							<InputMapping>
+								<Input name="" source="outcome" type="RandomResponseOutcome"/>
+							</InputMapping>
+						</Populator>
+					</Populators>
+					<Processors>
+						<Processor className="com.igt.gle.game.component.processor.PersistentOutcomeDeepCopyProcessor" type="Wager_Buy.OutcomeDeepCopyProcessor">
+							<InputMapping>
+								<Input name="ODERevealData" source="previousOutcome" type="JSONOutcome"/>
+								<Input name="ODERevealData" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.StaticTriggerProcessor" type="Wager_Buy.StaticTriggerProcessor">
+							<InputMapping>
+								<Input name="Wager_Buy.StaticTriggers" source="outcome" type="TriggerOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.LoopProcessor" type="Wager_Buy.LoopProcessor">
+							<InputMapping>
+								<Input name="Wager_Buy.StaticTriggers" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="" source="outcome" type="LoopOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.StageProcessor" type="Wager_Buy.StageProcessor">
+							<InputMapping>
+								<Input name="Wager_Buy.StaticTriggers" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="" source="outcome" type="StageOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.AdvancedTransactionProcessor" type="Wager_Buy.AdvancedTransactionProcessor">
+							<InputMapping>
+								<Input name="Wager_Buy.StaticTriggers" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="" source="outcome" type="TransactionOutcome"/>
+							</InputMapping>
+						</Processor>
+					</Processors>
+				</Components>
+			</ExecutionModel>
+			<ExecutionModel name="Wager_Try">
+				<Outcomes>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.WagerOutcomeWrapper" name="Game.Total" type="WagerOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.JSONOutcomeWrapper" name="WagerInput" type="JSONOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODEResponseOutcomeWrapper" name="ODEResponse" type="JSONOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.PrizeOutcomeWrapper" name="Game.Total" type="PrizeOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.RandomResponseOutcomeWrapper" name="" type="RandomResponseOutcome">
+						<Option>encrypted</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODEResponseOutcomeWrapper" name="ODEResponse.Encrypted" type="JSONOutcome">
+						<Option>encrypted</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.RandomResponseMappingOutcomeWrapper" name="" type="RandomResponseMappingOutcome">
+						<Option>encrypted</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODERevealDataOutcomeWrapper" name="ODERevealData" type="JSONOutcome">
+						<Option>persistent</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.RandomRequestOutcomeWrapper" name="" type="RandomRequestOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.PopulationOutcomeWrapper" name="Division" type="PopulationOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.PopulationOutcomeWrapper" name="ScenarioPerDivision" type="PopulationOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ActionOutcomeWrapper" name="WagerType" type="ActionOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="PricePoint" type="TriggerOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="Division" type="TriggerOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="Wager_Try.StaticTriggers" type="TriggerOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.StageOutcomeWrapper" name="" type="StageOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TransactionOutcomeWrapper" name="" type="TransactionOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+				</Outcomes>
+				<Components>
+					<Verifiers>
+						<Verifier className="com.igt.gle.game.component.verifier.wager.ActionVerifier" type="Wager_Try.ActionVerifier">
+							<InputMapping>
+								<Input name="" source="client" type="ActionInput"/>
+								<Input name="WagerType" source="outcome" type="ActionOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.verifier.action.ActionStrategy" name="action"/>
+							</StrategyMapping>
+						</Verifier>
+						<Verifier className="com.igt.gle.game.component.verifier.ode.ODEInputVerifier" type="Wager_Try.ODEInputVerifier.Wager">
+							<InputMapping>
+								<Input name="" source="client" type="WagerInput"/>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="PricePoint" source="outcome" type="TriggerOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.verifier.ode.strategy.WagerStrategy" name="wager"/>
+							</StrategyMapping>
+						</Verifier>
+						<Verifier className="com.igt.gle.game.component.verifier.ode.ODEInputVerifier" type="Wager_Try.ODEInputVerifier.JSON">
+							<InputMapping>
+								<Input name="" source="client" type="JSONInput"/>
+								<Input name="WagerInput" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.verifier.ode.strategy.JSONStrategy" name="json"/>
+							</StrategyMapping>
+						</Verifier>
+					</Verifiers>
+					<Populators>
+						<Populator className="com.igt.gle.game.component.populator.RandomRequestBuilder" type="Wager_Try.RandomRequest.DivisionSelection">
+							<InputMapping>
+								<Input name="" source="outcome" type="RandomRequestOutcome"/>
+								<Input name="PricePoint" source="refOutcome" type="TriggerOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.populator.strategy.randomrequestbuilder.TriggerReelsetSwitchStrategy" name="triggerReelsetSwitch"/>
+							</StrategyMapping>
+						</Populator>
+						<Populator className="com.igt.gle.game.component.populator.RandomRequestBuilder" type="Wager_Try.RandomRequest.ScenarioPerDivision">
+							<InputMapping>
+								<Input name="" source="outcome" type="RandomRequestOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.populator.strategy.randomrequestbuilder.StripLengthStrategy" name="stripLength"/>
+							</StrategyMapping>
+						</Populator>
+						<Populator className="com.igt.gle.game.component.populator.RandomRequestExecutor" type="Wager_Try.RandomRequestExecutor">
+							<InputMapping>
+								<Input name="" source="refOutcome" type="RandomRequestOutcome"/>
+								<Input name="" source="outcome" type="RandomResponseOutcome"/>
+								<Input name="" source="outcome" type="RandomResponseMappingOutcome"/>
+							</InputMapping>
+						</Populator>
+						<Populator className="com.igt.gle.game.component.populator.RandomResponsePopulator" type="Wager_Try.RandomResponse.DivisionSelection">
+							<InputMapping>
+								<Input name="" source="refOutcome" type="RandomResponseOutcome"/>
+								<Input name="" source="refOutcome" type="RandomResponseMappingOutcome"/>
+								<Input name="PricePoint" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="Division" source="outcome" type="PopulationOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.populator.strategy.randomresponsepopulator.TriggerReelsetSwitchStrategy" name="triggerReelsetSwitch"/>
+							</StrategyMapping>
+						</Populator>
+						<Populator className="com.igt.gle.game.component.populator.RandomResponsePopulator" type="Wager_Try.RandomResponse.ScenarioPerDivision">
+							<InputMapping>
+								<Input name="" source="refOutcome" type="RandomResponseOutcome"/>
+								<Input name="" source="refOutcome" type="RandomResponseMappingOutcome"/>
+								<Input name="ScenarioPerDivision" source="outcome" type="PopulationOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.populator.strategy.randomresponsepopulator.RandomLongStrategy" name="randomLong"/>
+							</StrategyMapping>
+						</Populator>
+					</Populators>
+					<Processors>
+						<Processor className="com.igt.gle.game.component.processor.PersistentOutcomeDeepCopyProcessor" type="Wager_Try.OutcomeDeepCopyProcessor">
+							<InputMapping>
+								<Input name="ODERevealData" source="previousOutcome" type="JSONOutcome"/>
+								<Input name="ODERevealData" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.PopulationTriggerProcessor" type="Wager_Try.PopulationTriggerProcessor">
+							<InputMapping>
+								<Input name="Division" source="refOutcome" type="PopulationOutcome"/>
+								<Input name="Division" source="outcome" type="TriggerOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.processor.strategy.populationtriggerprocessor.DefaultStrategy" name="default"/>
+							</StrategyMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.BulkGameDataStoreProcessor" type="Wager_Try.BulkGameDataStoreProcessor">
+							<InputMapping>
+								<Input name="WagerType" source="refOutcome" type="ActionOutcome"/>
+								<Input name="Game.Total" source="refOutcome" type="WagerOutcome"/>
+								<Input name="" source="refOutcome" type="RandomResponseOutcome"/>
+								<Input name="Division" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="ScenarioPerDivision" source="refOutcome" type="PopulationOutcome"/>
+								<Input name="ODEResponse.Encrypted" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.processor.strategy.bulkgamedatastore.SimulateODEResponseStrategy" name="simulateOdeResponse"/>
+							</StrategyMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.OutcomeDeepCopyProcessor" type="Wager_Try.OutcomeDeepCopyProcessor.ODEOutcome">
+							<InputMapping>
+								<Input name="ODEResponse.Encrypted" source="refOutcome" type="JSONOutcome"/>
+								<Input name="ODEResponse" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.ODERevealInjectionProcessor" type="Wager_Try.ODERevealInjectionProcessor">
+							<InputMapping>
+								<Input name="ODERevealData" source="refOutcome" type="JSONOutcome"/>
+								<Input name="ODEResponse" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.ODEPrizeProcessor" type="Wager_Try.ODEPrizeProcessor">
+							<InputMapping>
+								<Input name="ODEResponse" source="refOutcome" type="JSONOutcome"/>
+								<Input name="Game.Total" source="outcome" type="PrizeOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.StaticTriggerProcessor" type="Wager_Try.StaticTriggerProcessor">
+							<InputMapping>
+								<Input name="Wager_Try.StaticTriggers" source="outcome" type="TriggerOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.StageProcessor" type="Wager_Try.StageProcessor">
+							<InputMapping>
+								<Input name="Wager_Try.StaticTriggers" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="" source="outcome" type="StageOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.AdvancedTransactionProcessor" type="Wager_Try.AdvancedTransactionProcessor">
+							<InputMapping>
+								<Input name="Wager_Try.StaticTriggers" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="Game.Total" source="refOutcome" type="PrizeOutcome"/>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="" source="outcome" type="TransactionOutcome"/>
+							</InputMapping>
+						</Processor>
+					</Processors>
+				</Components>
+			</ExecutionModel>
+			<ExecutionModel name="Scenario">
+				<Outcomes>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.WagerOutcomeWrapper" name="Game.Total" type="WagerOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.PrizeOutcomeWrapper" name="Game.Total" type="PrizeOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODEResponseOutcomeWrapper" name="ODEResponse" type="JSONOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODERevealDataOutcomeWrapper" name="ODERevealData" type="JSONOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.RandomResponseOutcomeWrapper" name="" type="RandomResponseOutcome">
+						<Option>encrypted</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.RandomResponseMappingOutcomeWrapper" name="" type="RandomResponseMappingOutcome">
+						<Option>encrypted</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODEResponseOutcomeWrapper" name="ODEResponse.Encrypted" type="JSONOutcome">
+						<Option>encrypted</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.RandomRequestOutcomeWrapper" name="" type="RandomRequestOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ActionOutcomeWrapper" name="WagerType" type="ActionOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.PopulationOutcomeWrapper" name="Division" type="PopulationOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.PopulationOutcomeWrapper" name="ScenarioPerDivision" type="PopulationOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="PricePoint" type="TriggerOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="Division" type="TriggerOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.StageOutcomeWrapper" name="" type="StageOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TransactionOutcomeWrapper" name="" type="TransactionOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.AwardCapOutcomeWrapper" name="AwardCap" type="AwardCapOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="AwardCap" type="TriggerOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+				</Outcomes>
+				<Components>
+					<Verifiers/>
+					<Populators>
+						<Populator className="com.igt.gle.game.component.populator.RandomRequestBuilder" type="Scenario.RandomRequest.DivisionSelection">
+							<InputMapping>
+								<Input name="" source="outcome" type="RandomRequestOutcome"/>
+								<Input name="PricePoint" source="previousOutcome" type="TriggerOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.populator.strategy.randomrequestbuilder.TriggerReelsetSwitchStrategy" name="triggerReelsetSwitch"/>
+							</StrategyMapping>
+						</Populator>
+						<Populator className="com.igt.gle.game.component.populator.RandomRequestBuilder" type="Scenario.RandomRequest.ScenarioPerDivision">
+							<InputMapping>
+								<Input name="" source="outcome" type="RandomRequestOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.populator.strategy.randomrequestbuilder.StripLengthStrategy" name="stripLength"/>
+							</StrategyMapping>
+						</Populator>
+						<Populator className="com.igt.gle.game.component.populator.RandomRequestExecutor" type="Scenario.RandomRequestExecutor">
+							<InputMapping>
+								<Input name="" source="refOutcome" type="RandomRequestOutcome"/>
+								<Input name="" source="outcome" type="RandomResponseOutcome"/>
+								<Input name="" source="outcome" type="RandomResponseMappingOutcome"/>
+							</InputMapping>
+						</Populator>
+						<Populator className="com.igt.gle.game.component.populator.RandomResponsePopulator" type="Scenario.RandomResponse.DivisionSelection">
+							<InputMapping>
+								<Input name="" source="refOutcome" type="RandomResponseOutcome"/>
+								<Input name="" source="refOutcome" type="RandomResponseMappingOutcome"/>
+								<Input name="PricePoint" source="previousOutcome" type="TriggerOutcome"/>
+								<Input name="Division" source="outcome" type="PopulationOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.populator.strategy.randomresponsepopulator.TriggerReelsetSwitchStrategy" name="triggerReelsetSwitch"/>
+							</StrategyMapping>
+						</Populator>
+						<Populator className="com.igt.gle.game.component.populator.RandomResponsePopulator" type="Scenario.RandomResponse.ScenarioPerDivision">
+							<InputMapping>
+								<Input name="" source="refOutcome" type="RandomResponseOutcome"/>
+								<Input name="" source="refOutcome" type="RandomResponseMappingOutcome"/>
+								<Input name="ScenarioPerDivision" source="outcome" type="PopulationOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.populator.strategy.randomresponsepopulator.RandomLongStrategy" name="randomLong"/>
+							</StrategyMapping>
+						</Populator>
+					</Populators>
+					<Processors>
+						<Processor className="com.igt.gle.game.component.processor.OutcomeDeepCopyProcessor" type="Scenario.OutcomeDeepCopyProcessor">
+							<InputMapping>
+								<Input name="WagerType" source="previousOutcome" type="ActionOutcome"/>
+								<Input name="Game.Total" source="previousOutcome" type="WagerOutcome"/>
+								<Input name="ODERevealData" source="previousOutcome" type="JSONOutcome"/>
+								<Input name="WagerType" source="outcome" type="ActionOutcome"/>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="ODERevealData" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.PopulationTriggerProcessor" type="Scenario.PopulationTriggerProcessor">
+							<InputMapping>
+								<Input name="Division" source="refOutcome" type="PopulationOutcome"/>
+								<Input name="Division" source="outcome" type="TriggerOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.processor.strategy.populationtriggerprocessor.DefaultStrategy" name="default"/>
+							</StrategyMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.BulkGameDataStoreProcessor" type="Scenario.BulkGameDataStoreProcessor">
+							<InputMapping>
+								<Input name="" source="previousOutcome" type="RandomResponseOutcome"/>
+								<Input name="WagerType" source="refOutcome" type="ActionOutcome"/>
+								<Input name="Game.Total" source="refOutcome" type="WagerOutcome"/>
+								<Input name="Division" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="ScenarioPerDivision" source="refOutcome" type="PopulationOutcome"/>
+								<Input name="ODEResponse.Encrypted" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.processor.strategy.bulkgamedatastore.SimulateODEResponseStrategy" name="simulateOdeResponse"/>
+							</StrategyMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.OutcomeDeepCopyProcessor" type="Scenario.OutcomeDeepCopyProcessor.ODEOutcome">
+							<InputMapping>
+								<Input name="ODEResponse.Encrypted" source="refOutcome" type="JSONOutcome"/>
+								<Input name="ODEResponse" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.ODERevealInjectionProcessor" type="Scenario.ODERevealInjectionProcessor">
+							<InputMapping>
+								<Input name="ODERevealData" source="refOutcome" type="JSONOutcome"/>
+								<Input name="ODEResponse" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.ODEPrizeProcessor" type="Scenario.ODEPrizeProcessor">
+							<InputMapping>
+								<Input name="ODEResponse" source="refOutcome" type="JSONOutcome"/>
+								<Input name="Game.Total" source="outcome" type="PrizeOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.AwardCapProcessor" type="Game.AwardCapProcessor">
+							<InputMapping>
+								<Input name="Game.Total" source="outcome" type="PrizeOutcome"/>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="AwardCap" source="outcome" type="TriggerOutcome"/>
+								<Input name="AwardCap" source="outcome" type="AwardCapOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.StageProcessor" type="Scenario.StageProcessor">
+							<InputMapping>
+								<Input name="" source="outcome" type="StageOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.AdvancedTransactionProcessor" type="Scenario.AdvancedTransactionProcessor">
+							<InputMapping>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="" source="outcome" type="TransactionOutcome"/>
+							</InputMapping>
+						</Processor>
+					</Processors>
+				</Components>
+			</ExecutionModel>
+			<ExecutionModel name="Reveal">
+				<Outcomes>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.WagerOutcomeWrapper" name="Game.Total" type="WagerOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.PrizeOutcomeWrapper" name="Game.Total" type="PrizeOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODEResponseOutcomeWrapper" name="ODEResponse" type="JSONOutcome"/>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.RandomResponseOutcomeWrapper" name="" type="RandomResponseOutcome">
+						<Option>encrypted</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.ODERevealDataOutcomeWrapper" name="ODERevealData" type="JSONOutcome">
+						<Option>persistent</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TriggerOutcomeWrapper" name="Reveal.Status" type="TriggerOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.StageOutcomeWrapper" name="" type="StageOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+					<Outcome className="com.igt.gle.game.data.wrapper.outcome.TransactionOutcomeWrapper" name="" type="TransactionOutcome">
+						<Option>hidden</Option>
+					</Outcome>
+				</Outcomes>
+				<Components>
+					<Verifiers>
+						<Verifier className="com.igt.gle.game.component.verifier.ode.ODEInputVerifier" type="Reveal.ODEInputVerifier">
+							<InputMapping>
+								<Input name="" source="client" type="JSONInput"/>
+								<Input name="Reveal.Status" source="outcome" type="TriggerOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.verifier.ode.strategy.RevealStatusStrategy" name="revealStatus"/>
+							</StrategyMapping>
+						</Verifier>
+						<Verifier className="com.igt.gle.game.component.verifier.ode.PersistentODEInputVerifier" type="Reveal.ODEInputVerifier.RevealData">
+							<InputMapping>
+								<Input name="" source="client" type="JSONInput"/>
+								<Input name="ODERevealData" source="previousOutcome" type="JSONOutcome"/>
+								<Input name="ODERevealData" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+							<StrategyMapping>
+								<Strategy className="com.igt.gle.game.component.verifier.ode.strategy.RevealDataStrategy" name="revealData"/>
+							</StrategyMapping>
+						</Verifier>
+					</Verifiers>
+					<Populators>
+						<Populator className="com.igt.gle.game.component.populator.RngIdGenerator" type="Reveal.RngIdGenerator">
+							<InputMapping>
+								<Input name="" source="outcome" type="RandomResponseOutcome"/>
+							</InputMapping>
+						</Populator>
+					</Populators>
+					<Processors>
+						<Processor className="com.igt.gle.game.component.processor.OutcomeDeepCopyProcessor" type="Reveal.OutcomeDeepCopyProcessor">
+							<InputMapping>
+								<Input name="Game.Total" source="previousOutcome" type="WagerOutcome"/>
+								<Input name="Game.Total" source="previousOutcome" type="PrizeOutcome"/>
+								<Input name="ODEResponse" source="previousOutcome" type="JSONOutcome"/>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="Game.Total" source="outcome" type="PrizeOutcome"/>
+								<Input name="ODEResponse" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.ODERevealInjectionProcessor" type="Reveal.ODERevealInjectionProcessor">
+							<InputMapping>
+								<Input name="ODERevealData" source="refOutcome" type="JSONOutcome"/>
+								<Input name="ODEResponse" source="outcome" type="JSONOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.StageProcessor" type="Reveal.StageProcessor">
+							<InputMapping>
+								<Input name="Reveal.Status" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="" source="outcome" type="StageOutcome"/>
+							</InputMapping>
+						</Processor>
+						<Processor className="com.igt.gle.game.component.processor.AdvancedTransactionProcessor" type="Reveal.AdvancedTransactionProcessor">
+							<InputMapping>
+								<Input name="Reveal.Status" source="refOutcome" type="TriggerOutcome"/>
+								<Input name="Game.Total" source="refOutcome" type="PrizeOutcome"/>
+								<Input name="Game.Total" source="outcome" type="WagerOutcome"/>
+								<Input name="" source="outcome" type="TransactionOutcome"/>
+							</InputMapping>
+						</Processor>
+					</Processors>
+				</Components>
+			</ExecutionModel>
+			<StageGraph>
+				<StartingStage>Wager</StartingStage>
+				<Stage name="Wager">
+					<StageConnector name="WagerToWager">
+						<ExitName>finished</ExitName>
+						<FinalStageName>Wager</FinalStageName>
+						<EntryName/>
+						<Priority>50</Priority>
+					</StageConnector>
+					<StageConnector name="WagerToScenario">
+						<ExitName>feature</ExitName>
+						<FinalStageName>Scenario</FinalStageName>
+						<EntryName/>
+						<Priority>0</Priority>
+					</StageConnector>
+				</Stage>
+				<Stage name="Scenario">
+					<StageConnector name="ScenarioToReveal">
+						<ExitName>feature</ExitName>
+						<FinalStageName>Reveal</FinalStageName>
+						<EntryName/>
+						<Priority>0</Priority>
+					</StageConnector>
+				</Stage>
+				<Stage name="Reveal">
+					<StageConnector name="RevealToReveal">
+						<ExitName>feature</ExitName>
+						<FinalStageName>Reveal</FinalStageName>
+						<EntryName/>
+						<Priority>50</Priority>
+					</StageConnector>
+					<StageConnector name="RevealToWager">
+						<ExitName>finished</ExitName>
+						<FinalStageName>Wager</FinalStageName>
+						<EntryName/>
+						<Priority>0</Priority>
+					</StageConnector>
+				</Stage>
+			</StageGraph>
+		</StageModel>
+	</DigestedData>
+</SignedPaytable>

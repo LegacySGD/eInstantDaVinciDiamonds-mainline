@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translation language="sv">
+<phrase key="softwareId" value="Programvaru-ID"/>
+<phrase key="transactionId" value="Transaktions-ID"/>
+<phrase key="totalWins" value="Totalt vunnet"/>
+<phrase key="totalWager" value="Totalt satsat"/>
+<phrase key="outcomeLabel" value="Vinnande utfall"/>
+<phrase key="lineLabel" value="Symboler"/>
+<phrase key="winLabel" value="Vinnande linjer"/>
+<phrase key="winPrizeLabel" value="Vinster"/>
+<phrase key="noWinLabel" value="Nej"/>
+<phrase key="A" value="Diamant"/>
+<phrase key="B" value="Röd ädelsten"/>
+<phrase key="C" value="Gul ädelsten"/>
+<phrase key="D" value="Grön ädelsten"/>
+<phrase key="E" value="Blå ädelsten"/>
+<phrase key="F" value="Lila ädelsten"/>
+</translation>

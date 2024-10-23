@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translation language="de">
+<phrase key="softwareId" value="Software-ID"/>
+<phrase key="transactionId" value="Transaktions-ID"/>
+<phrase key="totalWins" value="Gewinne gesamt"/>
+<phrase key="totalWager" value="Einsatz gesamt"/>
+<phrase key="outcomeLabel" value="Gewinnergebnis"/>
+<phrase key="lineLabel" value="Symbole"/>
+<phrase key="winLabel" value="Gewinnlinien"/>
+<phrase key="winPrizeLabel" value="Gewinne"/>
+<phrase key="noWinLabel" value="Nein"/>
+<phrase key="A" value="Diamant"/>
+<phrase key="B" value="Roter Edelstein"/>
+<phrase key="C" value="Gelber Edelstein"/>
+<phrase key="D" value="Grüner Edelstein"/>
+<phrase key="E" value="Blauer Edelstein"/>
+<phrase key="F" value="Lila Edelstein"/>
+</translation>

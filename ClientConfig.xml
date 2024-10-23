@@ -1,0 +1,5 @@
+<ClientConfig>
+	<GameClient name="Da Vinci Diamonds COM" clientCode="mobile"  technology="HTML" height="600" width="960" meterheight="0" meterwidth="10" gameFolder="DaVinciDiamondsIW" enableFreeSpin="N" clientversion="1.0" gameId="300-2100-1" />
+	<GameClient name="Da Vinci Diamonds COM" clientCode="tablet"  technology="HTML" height="600" width="960" meterheight="0" meterwidth="10" gameFolder="DaVinciDiamondsIW" enableFreeSpin="N" clientversion="1.0" gameId="300-2100-1" />
+	<GameClient name="Da Vinci Diamonds COM" clientCode="desktop" technology="HTML" height="600" width="960" meterheight="0" meterwidth="10" gameFolder="DaVinciDiamondsIW" enableFreeSpin="N" clientversion="1.0" gameId="300-2100-1" />
+</ClientConfig>

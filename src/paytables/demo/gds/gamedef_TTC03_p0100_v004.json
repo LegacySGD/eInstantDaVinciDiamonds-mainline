@@ -1,0 +1,279 @@
+{
+  "fileFormatVersion": 18,
+  "versionFromFilename": "v004",
+  "gameType": 0,
+  "gridSize": 31,
+  "revealFileSignature": [
+    13,
+    -9,
+    64,
+    4,
+    -31,
+    -97,
+    67,
+    -4,
+    100,
+    3,
+    -124,
+    -115,
+    -4,
+    49,
+    118,
+    -80,
+    124,
+    -40,
+    -15,
+    -24,
+    -68,
+    -35,
+    -29,
+    37,
+    62,
+    -61,
+    30,
+    -101,
+    -12,
+    -85,
+    -10,
+    17,
+    114,
+    5,
+    69,
+    -112,
+    -53,
+    46,
+    -55,
+    17,
+    21,
+    -66,
+    57,
+    -97,
+    -88,
+    -92,
+    106,
+    -88,
+    -71,
+    90,
+    -10,
+    -96,
+    77,
+    79,
+    -58,
+    59,
+    -9,
+    -48,
+    -72,
+    -95,
+    -96,
+    -80,
+    124,
+    19
+  ],
+  "bigEndian": false,
+  "playcardScanFlag": false,
+  "pricePoint": 100,
+  "betUnits": 1,
+  "validationUnits": 1,
+  "numberOfDivisions": 31,
+  "longGameName": "Tic Tac Click 3",
+  "shortGameName": "TTC03",
+  "vendorId": 1,
+  "internalAuditVendorId": 2,
+  "externalAuditVendorId": 0,
+  "gridMethod": 0,
+  "gridTrigger": 0,
+  "gridTriggerUnit": 0,
+  "prizes": [
+    {
+      "divisionValue": 1000000,
+      "tableValue": 1000000,
+      "winnerCount": 1,
+      "description": "A3"
+    },
+    {
+      "divisionValue": 50000,
+      "tableValue": 6000,
+      "winnerCount": 1,
+      "description": "A2"
+    },
+    {
+      "divisionValue": 40000,
+      "tableValue": 600,
+      "winnerCount": 1,
+      "description": "A1"
+    },
+    {
+      "divisionValue": 30000,
+      "tableValue": 50000,
+      "winnerCount": 1,
+      "description": "B3"
+    },
+    {
+      "divisionValue": 20000,
+      "tableValue": 5000,
+      "winnerCount": 1,
+      "description": "B2"
+    },
+    {
+      "divisionValue": 10000,
+      "tableValue": 500,
+      "winnerCount": 1,
+      "description": "B1"
+    },
+    {
+      "divisionValue": 6500,
+      "tableValue": 40000,
+      "winnerCount": 1,
+      "description": "C3"
+    },
+    {
+      "divisionValue": 6000,
+      "tableValue": 4000,
+      "winnerCount": 1,
+      "description": "C2"
+    },
+    {
+      "divisionValue": 5000,
+      "tableValue": 400,
+      "winnerCount": 1,
+      "description": "C1"
+    },
+    {
+      "divisionValue": 4000,
+      "tableValue": 30000,
+      "winnerCount": 1,
+      "description": "D3"
+    },
+    {
+      "divisionValue": 3600,
+      "tableValue": 3000,
+      "winnerCount": 1,
+      "description": "D2"
+    },
+    {
+      "divisionValue": 3000,
+      "tableValue": 300,
+      "winnerCount": 1,
+      "description": "D1"
+    },
+    {
+      "divisionValue": 2400,
+      "tableValue": 20000,
+      "winnerCount": 1,
+      "description": "E3"
+    },
+    {
+      "divisionValue": 2000,
+      "tableValue": 2000,
+      "winnerCount": 1,
+      "description": "E2"
+    },
+    {
+      "divisionValue": 1600,
+      "tableValue": 200,
+      "winnerCount": 1,
+      "description": "E1"
+    },
+    {
+      "divisionValue": 1500,
+      "tableValue": 10000,
+      "winnerCount": 1,
+      "description": "F3"
+    },
+    {
+      "divisionValue": 1400,
+      "tableValue": 1000,
+      "winnerCount": 1,
+      "description": "F2"
+    },
+    {
+      "divisionValue": 1300,
+      "tableValue": 100,
+      "winnerCount": 1,
+      "description": "F1"
+    },
+    {
+      "divisionValue": 1200,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 1100,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 1000,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 900,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 800,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 700,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 600,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 500,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 400,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 300,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 200,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 100,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    },
+    {
+      "divisionValue": 0,
+      "tableValue": 0,
+      "winnerCount": 1,
+      "description": "  "
+    }
+  ],
+  "siteId": 254,
+  "prizeDescriptionLength": 2,
+  "gameGroupNumber": 0,
+  "kenoSpotCount": 0,
+  "kenoMultiplier": false
+}

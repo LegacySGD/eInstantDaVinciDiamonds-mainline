@@ -1,0 +1,75 @@
+<SignedPaytable>
+	<Key>wwpublic1</Key>
+	<Signature>n8y9K0psie3tBXOZWvmf4RWkKqWxDI2yurAZxEwyirMvEIZy7bC8ZvBTebvD8GpBlNNEyLm6Wdz2Kcwri5zxs8Ftzsl+dME4WCKLCjo8hfTjTrsttp/9FsVNYjlVG4XtnxX5SpYMuFcagGXeZK+30O03Yy62HrKriJDe+pB4KX8=</Signature>
+	<Digest>bf576jsee09mt5Pyt0eSZHfteHU=</Digest>
+	<DigestedData>
+		<XMLMapping className="" gameId="DaVinciDiamondsIW">
+			<Mapping>
+				<Paytable>
+					<SchemaNode type="ActionInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.ActionInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="PaytableVariation">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.PaytableVariationWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="ComponentsDataMapping">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.ComponentsDataMappingWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="PopulationInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.PopulationInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="StripInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.CompactStripInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="PopulationStripMapping">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.PopulationStripMappingWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="PopulationTriggerInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.PopulationTriggerInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="ODEInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.ODEInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="TriggerInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.TriggerInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="DeepCopyInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.DeepCopyInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="PrizeInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.PrizeInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="StageTriggerInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.StageTriggerInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="WagerStrategyInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.WagerStrategyInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="BulkGameDataStoreInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.BulkGameDataStoreInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="KeyValuePairInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.KeyValuePairInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="InstantWinPrizeInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.InstantWinPrizeInfoWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="AwardCapInfo">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.paytable.AwardCapInfoWrapper"/>
+					</SchemaNode>
+				</Paytable>
+				<Input>
+					<SchemaNode type="ActionInput">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.input.ActionInputWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="WagerInput">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.input.WagerInputWrapper"/>
+					</SchemaNode>
+					<SchemaNode type="JSONInput">
+						<DefaultWrapper className="com.igt.gle.game.data.wrapper.input.ODEInputWrapper"/>
+					</SchemaNode>
+				</Input>
+			</Mapping>
+		</XMLMapping>
+	</DigestedData>
+</SignedPaytable>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Histo>
+
+	<ClientInputBuilder class="com.wagerworks.gts.client.histo.XMLHistoClientMappedExecutionModel">
+		<!-- TRY mode mappings -->
+		<ExecutionModelMapping previousExecutionModel="Wager_Try" nextStage="Wager" nextExecutionModel="Wager_Try" />
+		<!-- BUY mode mappings -->
+		<ExecutionModelMapping previousExecutionModel="Wager_Buy" nextStage="Wager" nextExecutionModel="Wager_Buy" />
+		<ExecutionModelMapping previousExecutionModel="Wager_Buy" nextStage="Scenario" nextExecutionModel="Scenario" />
+		<ExecutionModelMapping previousExecutionModel="Scenario" nextStage="Reveal" nextExecutionModel="Reveal" />
+		<ExecutionModelMapping previousExecutionModel="Reveal" nextStage="Wager" nextExecutionModel="Wager_Buy" />
+	</ClientInputBuilder>
+
+	<ExecutionModels>
+		<Wager_Try>
+			<Input>
+				<ActionInput>
+					<Action>TRY</Action>
+				</ActionInput>
+				<WagerInput>
+					<Wager name="Wager1">100</Wager>
+				</WagerInput>
+				<JSONInput>{'testData':0}</JSONInput>
+			</Input>
+			<Result>
+				<GameCount class="com.wagerworks.gts.histo.common.counter.SimpleCounter">
+					<Param name="appendName" value="WAGERTRY"/>
+				</GameCount>
+				<Sums>
+					<Wager_WAGERTRY class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Settled/text()"/>
+						<Param name="xpath" value="//OutcomeDetail/Pending/text()"/>
+					</Wager_WAGERTRY>
+					<Pay_WAGERTRY class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Payout/text()"/>
+					</Pay_WAGERTRY>
+				</Sums>
+				<InstantWinData class="com.wagerworks.gts.histo.common.instantwin.ODEResponseDataCounter">
+					<!-- Available tokens: @amount@, @wagerType@, @scenario@, @prizeValue@, @prizeDivision@ -->
+					<Param name="keyFormat" value="@amount@_@prizeDivision@_@scenario@_@wagerType@"/>
+					<Param name="jsonOutcomeName" value="ODEResponse"/>
+				</InstantWinData>
+				<DivisionCounts class="com.wagerworks.gts.histo.common.instantwin.ODEResponseDataCounter">
+					<!-- Available tokens: @amount@, @wagerType@, @scenario@, @prizeValue@, @prizeDivision@ -->
+					<Param name="keyFormat" value="@prizeDivision@_DIV"/>
+					<Param name="jsonOutcomeName" value="ODEResponse"/>
+				</DivisionCounts>
+			</Result>
+		</Wager_Try>
+		<Wager_Buy>
+			<Input>
+				<ActionInput>
+					<Action>BUY</Action>
+				</ActionInput>
+				<WagerInput>
+					<Wager name="Wager1">100</Wager>
+				</WagerInput>
+				<JSONInput>{'testData':0}</JSONInput>
+			</Input>
+			<Result>
+				<GameCount class="com.wagerworks.gts.histo.common.counter.SimpleCounter">
+					<Param name="appendName" value="WAGERBUY"/>
+				</GameCount>
+				<Sums>
+					<Wager_WAGERBUY class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Settled/text()"/>
+						<Param name="xpath" value="//OutcomeDetail/Pending/text()"/>
+					</Wager_WAGERBUY>
+					<Pay_WAGERBUY class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Payout/text()"/>
+					</Pay_WAGERBUY>
+				</Sums>
+			</Result>
+		</Wager_Buy>
+		<Scenario>
+			<Input>
+			</Input>
+			<Result>
+				<GameCount class="com.wagerworks.gts.histo.common.counter.SimpleCounter">
+					<Param name="appendName" value="SCENARIO"/>
+				</GameCount>
+				<Sums>
+					<Wager class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Settled/text()"/>
+						<Param name="xpath" value="//OutcomeDetail/Pending/text()"/>
+					</Wager>
+					<Pay_SCENARIO class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Payout/text()"/>
+					</Pay_SCENARIO>
+				</Sums>
+			</Result>
+		</Scenario>
+		<Reveal>
+			<Input>
+				<JSONInput>{'revealStatus':0,'revealData':'test message'}</JSONInput>
+			</Input>
+			<Result>
+				<GameCount class="com.wagerworks.gts.histo.common.counter.SimpleCounter">
+					<Param name="appendName" value="REVEAL"/>
+				</GameCount>
+				<Sums>
+					<Wager class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Settled/text()"/>
+						<Param name="xpath" value="//OutcomeDetail/Pending/text()"/>
+					</Wager>
+					<Pay_REVEAL class="com.wagerworks.gts.histo.common.sum.Sum">
+						<Param name="xpath" value="//OutcomeDetail/Payout/text()"/>
+					</Pay_REVEAL>
+				</Sums>
+				<InstantWinData class="com.wagerworks.gts.histo.common.instantwin.ODEResponseDataCounter">
+					<!-- Available tokens: @amount@, @wagerType@, @scenario@, @prizeValue@, @prizeDivision@ -->
+					<Param name="keyFormat" value="@amount@_@prizeDivision@_@scenario@_@wagerType@"/>
+					<Param name="jsonOutcomeName" value="ODEResponse"/>
+				</InstantWinData>
+				<DivisionCounts class="com.wagerworks.gts.histo.common.instantwin.ODEResponseDataCounter">
+					<!-- Available tokens: @amount@, @wagerType@, @scenario@, @prizeValue@, @prizeDivision@ -->
+					<Param name="keyFormat" value="@prizeDivision@_DIV"/>
+					<Param name="jsonOutcomeName" value="ODEResponse"/>
+				</DivisionCounts>
+			</Result>
+		</Reveal>
+	</ExecutionModels>
+</Histo>
